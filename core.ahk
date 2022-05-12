@@ -6,14 +6,28 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; Gui, AllRound:Color,, 000000
 
 gui AllRound:+AlwaysOnTop
-Gui, AllRound: Show, w700 h700 ,All Round Helper
+Gui, AllRound: Show, w700 h700 ,All Round Helper v1.0.0
+
+
 
 ;-------------------------Call Tracker---------------------------------------
-Gui, AllRound:Add, Button, Default x10  w100 h30 gManualLeavingMessage ,Manual Leave message
-Gui, AllRound:Add, Button, Default x145 y26  w100 h30 gEndingCalling ,End Call
-Gui, AllRound:Add, Button, Default x265 y26  w100 h30 gTrack ,Track Calls
+Gui, AllRound:Add, Button, Default x10  w100 h30 gManualLeavingMessage vleftMsg ,Manual Leave message
+Gui, AllRound:Add, Button, Default x+10 w100 h30 gEndingCalling vendCall ,End Call
+Gui, AllRound:Add, Button, Default x12 y2 w100 h30 gTrack vtracking ,Track Calls
 
-Gui, AllRound:Add, ListView, x0 r20 h50 w700 , Calls
+Gui, AllRound:Add, ListView, vCallsList x0  h50 w700 , Calls|NBN|Moblies|VoIP
+
+
+GuiControl, AllRound: hide, leftMsg
+GuiControl, AllRound: hide, endCall
+
+
+
+global calls := 0
+nbnSales := 0
+AutoCall := 0
+global matchingLeads 
+global trackerActive := false
 
 
 
@@ -35,18 +49,53 @@ EndingCalling()
 EndCallTracker() {
 	calls++
 
- 
-	LV_Modify("calls"," ",calls)
+    Gui, ListView, CallsList
+	LV_Modify("NBN"," ",calls)
 }
 
 
 Track()
 {
-  LV_Add("calls", 0)
+  trackerActive = true
+    GuiControl, AllRound: show, leftMsg
+    GuiControl, AllRound: show, endCall
+    GuiControl, AllRound: hide, tracking
+ 
+  Gui, ListView, CallsList
+  LV_Add("calls", 0,0,0,0)
  
 }
 
 ;----------------------------------------------------------------
+
+;-----------------Templates--------------------------------
+; Gui, AllRound: Add, Text, section xm w80, Template:
+Gui, AllRound: Add, DropDownList,  w182 x250  vTemp AltSubmit, Please select a template|| Relocation | Take Notes|
+
+    Gui, AllRound: Add, Text, section xm w80 vReloCustNameTitle,Customer Name:
+    Gui, AllRound: Add, Edit, vReloCustName w200 ys
+    Gui, AllRound: Add, Text, section xm w80 vReloOlderAddressTitle,Current Address:
+    Gui, AllRound: Add, Edit, vReloOlderAddress w200 ys
+    Gui, AllRound: Add, Text, section xm w80 vReloNewAddressTitle,New Address:
+    Gui, AllRound: Add, Edit, vReloNewAddress w200 ys
+
+    Gui, AllRound: Add, CheckBox, vReloCallBackToCLose x5  ,Tick this if they have to callback to close service?
+    Gui, AllRound: Add, CheckBox, vReloHasTechAppointment  , Tick this if they have tech appointment?
+    Gui, AllRound: Add, CheckBox, vReloHasFetch , Tick this if they have a Fetch Boxes?
+    Gui, AllRound: Add, CheckBox, vReloHasMoblies , Tick this if they have a Mobiles?
+    Gui, AllRound: Add, CheckBox, vReloHasDisconnectingDate  , Tick this if they have a disconnecting date?
+    
+    GuiControl, AllRound: show, ReloHasTechAppointment
+    GuiControl, AllRound: show ,ReloCallBackToCLose
+   
+    Gui, AllRound: Add, Text, section xm w100 vReloConnectionDate,Connection date:
+    Gui, AllRound: Add, DateTime, vReloDateTimeConnection, dd/MM/yyyy
+    Gui, AllRound: Add, Text, section xm w100  vReloDiconnectionDate,Disconnect date:
+    Gui, AllRound: Add, DateTime, vReloDateTimeDiconnect, dd/MM/yyyy
+   
+
+;----------------------------------------------------------------
+
 
 
 ;----------------Coms Tracker Part------------------
@@ -274,10 +323,12 @@ ToggleComsTracker(value,toggle){
 
 
 LiveUpdateComs(amount, item){
+    
+    Gui, ListView, ToggleComsList
     LV_Add(,"$" + amount,item)
 }
 RemoveFromList(){
-   
+   Gui, ListView, ToggleComsList
    removing :=  LV_GetCount()
     LV_Delete(removing)  ; Clear the row from the ListView.
 }
