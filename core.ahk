@@ -50,7 +50,7 @@ EndCallTracker() {
 	calls++
 
     Gui, ListView, CallsList
-	LV_Modify("NBN"," ",calls)
+	LV_Modify("Tracking",,calls)
 }
 
 
@@ -70,7 +70,7 @@ Track()
 
 ;-----------------Templates--------------------------------
 ; Gui, AllRound: Add, Text, section xm w80, Template:
-Gui, AllRound: Add, DropDownList,  w182 x250  vTemp AltSubmit, Please select a template|| Relocation | Take Notes|
+Gui, AllRound: Add, DropDownList,  w182 x250  vTemp gChangeTemplate  AltSubmit, Please Pick Template || Relocation| Addy Update|
 
     Gui, AllRound: Add, Text, section xm w80 vReloCustNameTitle,Customer Name:
     Gui, AllRound: Add, Edit, vReloCustName w200 ys
@@ -94,6 +94,8 @@ Gui, AllRound: Add, DropDownList,  w182 x250  vTemp AltSubmit, Please select a t
     Gui, AllRound: Add, DateTime, vReloDateTimeDiconnect, dd/MM/yyyy
    
 
+
+    
 ;----------------------------------------------------------------
 
 
@@ -384,60 +386,17 @@ init(){
 
 }
 
-HideComPage(){
-  GuiControl, Hide, btn25
-  GuiControl, Hide, btn250
-  GuiControl, Hide, btn100
-  GuiControl, Hide, btn1000
-  
-  GuiControl, Hide, text50
-  GuiControl, Hide, drop50
-  
-}
 
-Update:
-    getLatestReleaseInfo()
 
-return
-
-getLatestReleaseInfo()
-{
-    
-    
-    ; if !FileExist(A_ScriptDir . "\updater.ahk")
-    ;     msgBox, the updater is not here, please dont remove
-    ;     getUpdaterIfRemove()
-        
-    
-
-    run updater.ahk
-	; Process, Close, salesTrackerComs.ahk
-    ; FileDelete, %A_ScriptDir%\salesTrackerComs.exe
-	; Sleep, 2000
-	; run git clone https://github.com/bennyboy743/OBandIBComsTracker.git
-	; Sleep, 2000
-	; FileMove, %A_ScriptDir%\OBandIBComsTracker\salesTrackerComs.exe, %A_ScriptDir%
-    ; Sleep, 2000
-	; FileRemoveDir, %A_ScriptDir%\OBandIBComsTracker, 1
-    ; run salesTrackerComs.exe
-    
-
-	
-	
-}
-
-; getUpdaterIfRemove(){
-;     run git clone https://github.com/bennyboy743/OBandIBComsTracker.git
-;     Sleep, 2000
-;     FileMove, %A_ScriptDir%\OBandIBComsTracker\updater.ahk, %A_ScriptDir%
-;     Sleep, 2000
-;     FileRemoveDir, %A_ScriptDir%\OBandIBComsTracker, 1
-; }
-getLatestReleaseInfo()
 
 ;--------------------------------
-
-
+global NbnNumber = 0
+AddToNBNCounter(){
+    NbnNumber := NbnNumber +
+    msgBox, %NbnNumber%
+    LV_Modify("Tracking",,NbnNumber)
+}
+LV_Modify("Tracking",,calls)
 
 ;----NBN LOGIC----
 
@@ -447,6 +406,7 @@ Picked50/20:
 	AddToTotal(3, "50/20 NBN 500GB")
  }else {
 	AddToTotal(4.5, "50/20 NBN Unlimted")
+    
  }
  return
  
@@ -457,6 +417,7 @@ Picked50/20:
 	AddToTotal(3.75, "75/20 NBN 500GB" )
  }else {
 	AddToTotal(5.25, "75/20 NBN Unlimted")
+    AddToNBNCounter()
  }
  return
  
@@ -724,3 +685,69 @@ S512GB:
     return
 
 ;-----------------------------------------
+ShowReloInfomation(toggle){
+        GuiControl, %toggle%, ReloCustNameTitle
+        GuiControl, %toggle%, ReloCustName
+        GuiControl, %toggle%, ReloOlderAddressTitle
+        GuiControl, %toggle%, ReloOlderAddress
+        GuiControl, %toggle%, ReloNewAddressTitle
+        GuiControl, %toggle%, ReloNewAddress
+        GuiControl, %toggle%, ReloCallBackToCLose
+        GuiControl, %toggle%, ReloHasTechAppointment
+        GuiControl, %toggle%, ReloHasFetch
+        GuiControl, %toggle%, ReloHasMoblies
+        GuiControl, %toggle%, ReloHasDisconnectingDate
+        GuiControl, %toggle%, ReloHasTechAppointment
+        GuiControl, %toggle%, ReloCallBackToCLose
+        GuiControl, %toggle%, ReloConnectionDate
+        GuiControl, %toggle%, ReloDateTimeConnection
+        GuiControl, %toggle%, ReloDiconnectionDate
+        GuiControl, %toggle%, ReloDateTimeDiconnect
+}
+
+;---------Template Functions--------------------------------
+moveComsGui(moveComs){
+    if(moveComs){
+        GuiControl, Move, Toggle1, y120
+        GuiControl, Move, ToggleComsText, y330
+        GuiControl, Move, totalAmount, y330
+        GuiControl, Move, ToggleUndoBtn, y390
+        GuiControl, Move, ToggleComsList, y330
+        WinMove,A,,,,,460
+        return
+    }
+        GuiControl, Move, Toggle1, y400
+        GuiControl, Move, ToggleComsText, y640
+        GuiControl, Move, totalAmount, y640
+        GuiControl, Move, ToggleUndoBtn, y670
+        GuiControl, Move, ToggleComsList, y600
+        WinMove,A,,,,,740
+        return 
+
+}
+
+CheckTemplate(){
+    GuiControlGet, Temp,
+      if(Temp == 1){
+          ShowReloInfomation("Hide")
+          moveComsGui(true)
+        return
+    }
+    if(Temp == 2){
+        ShowReloInfomation("Show")
+        GuiControl, Move, Toggle1, y400
+        moveComsGui(false)
+        return
+    }
+    if(Temp == 3){
+        ShowReloInfomation("Hide")
+        return
+    }
+    
+    
+    
+}
+ChangeTemplate:
+    CheckTemplate()
+    
+    
