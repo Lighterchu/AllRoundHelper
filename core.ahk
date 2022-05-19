@@ -4,9 +4,9 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, Force
 ; Gui, AllRound:Color,, 000000
-
+Gui, AllRound:Color,C0C0C0
 gui AllRound:+AlwaysOnTop
-Gui, AllRound: Show, w700 h700 ,All Round Helper v1.0.0
+Gui, AllRound: Show, w700 h430 ,All Round Helper v1.0.0
 
 
 
@@ -14,6 +14,8 @@ Gui, AllRound: Show, w700 h700 ,All Round Helper v1.0.0
 Gui, AllRound:Add, Button, Default x10  w100 h30 gManualLeavingMessage vleftMsg ,Manual Leave message
 Gui, AllRound:Add, Button, Default x+10 w100 h30 gEndingCalling vendCall ,End Call
 Gui, AllRound:Add, Button, Default x12 y2 w100 h30 gTrack vtracking ,Track Calls
+Gui, AllRound:Add, Button, Default x500 y2 w100 h30 ,Settings
+
 
 Gui, AllRound:Add, ListView, vCallsList x0  h50 w700 , Calls|NBN|Moblies|VoIP
 
@@ -66,11 +68,35 @@ Track()
  
 }
 
+ShowReloInfomation(toggle){
+    
+        GuiControl, %toggle%, ReloCustNameTitle
+        GuiControl, %toggle%, ReloCustName
+        GuiControl, %toggle%, ReloOlderAddressTitle
+        GuiControl, %toggle%, ReloOlderAddress
+        GuiControl, %toggle%, ReloNewAddressTitle
+        GuiControl, %toggle%, ReloNewAddress
+        GuiControl, %toggle%, ReloCallBackToCLose
+        GuiControl, %toggle%, ReloHasTechAppointment
+        GuiControl, %toggle%, ReloHasFetch
+        GuiControl, %toggle%, ReloHasMoblies
+        GuiControl, %toggle%, ReloHasDisconnectingDate
+        GuiControl, %toggle%, ReloHasTechAppointment
+        GuiControl, %toggle%, ReloCallBackToCLose
+        GuiControl, %toggle%, ReloConnectionDate
+        GuiControl, %toggle%, ReloDateTimeConnection
+        GuiControl, %toggle%, ReloDiconnectionDate
+        GuiControl, %toggle%, ReloDateTimeDiconnect
+}
+
+ShowReloInfomation("Hide")
+
+
 ;----------------------------------------------------------------
 
 ;-----------------Templates--------------------------------
 ; Gui, AllRound: Add, Text, section xm w80, Template:
-Gui, AllRound: Add, DropDownList,  w182 x250  vTemp gChangeTemplate  AltSubmit, Please Pick Template || Relocation| Addy Update|
+Gui, AllRound: Add, DropDownList,  w182 x250  vTemp gChangeTemplate  AltSubmit, Please Pick Template || Relocation| Addy Update| Relocation| Addy Update|
 
     Gui, AllRound: Add, Text, section xm w80 vReloCustNameTitle,Customer Name:
     Gui, AllRound: Add, Edit, vReloCustName w200 ys
@@ -94,7 +120,23 @@ Gui, AllRound: Add, DropDownList,  w182 x250  vTemp gChangeTemplate  AltSubmit, 
     Gui, AllRound: Add, DateTime, vReloDateTimeDiconnect, dd/MM/yyyy
    
 
-
+    GuiControl, Allround:hide, ReloCustNameTitle
+    GuiControl, Allround:hide, ReloCustName
+    GuiControl, Allround:hide, ReloOlderAddressTitle
+    GuiControl, Allround:hide, ReloOlderAddress
+    GuiControl, Allround:hide, ReloNewAddressTitle
+    GuiControl, Allround:hide, ReloNewAddress
+    GuiControl, Allround:hide, ReloCallBackToCLose
+    GuiControl, Allround:hide, ReloHasTechAppointment
+    GuiControl, Allround:hide, ReloHasFetch
+    GuiControl, Allround:hide, ReloHasMoblies
+    GuiControl, Allround:hide, ReloHasDisconnectingDate
+    GuiControl, Allround:hide, ReloHasTechAppointment
+    GuiControl, Allround:hide, ReloCallBackToCLose
+    GuiControl, Allround:hide, ReloConnectionDate
+    GuiControl, Allround:hide, ReloDateTimeConnection
+    GuiControl, Allround:hide, ReloDiconnectionDate
+    GuiControl, Allround:hide, ReloDateTimeDiconnect
     
 ;----------------------------------------------------------------
 
@@ -118,7 +160,7 @@ global oldComs = := []
 global CurrentComs := []
 
 
-Gui,  AllRound:Add, Tab3, x0 y400 w700 h200 vToggle1, NBN|HARDWARE|MOBILE SIMS DATA ONLY|MOBILE SIMS VOICE AND DATA|5G MOBILE VOICE AND DATA|VOIP PHONE|MOBILE HANDSETS|
+Gui,  AllRound:Add, Tab3, x0 y120 w700 h200 vToggle1, NBN|HARDWARE|MOBILE SIMS DATA ONLY|MOBILE SIMS VOICE AND DATA|5G MOBILE VOICE AND DATA|VOIP PHONE|MOBILE HANDSETS|
 ; ;Gui, Show, w520 h580, OutBounder Comms Tracker,Gui
 
 
@@ -262,15 +304,15 @@ Gui,  AllRound:tab,
 
 
 
-Gui,  AllRound:Add, Text, vToggleComsText x20 y620 cRed , Total Coms: 
-Gui,  AllRound:Add, Edit, r1 vtotalAmount x130 y620 w100 +ReadOnly, 
+Gui,  AllRound:Add, Text, vToggleComsText x20 y330 cRed , Total Coms: 
+Gui,  AllRound:Add, Edit, r1 vtotalAmount x130 y330 w100 +ReadOnly, 
 
 
 ; Gui, Add, Text, x20 y500 cRed , Edit Total Coms: 
 ; Gui, Add, Edit, r1 vEdittotalAmount x130 y500 w100,
 ;Gui, Add, Button, w100 h40 y540 x0 gSaveBtn, Save Edit
-Gui,  AllRound:Add, Button, vToggleUndoBtn w100 h40 y660 x0 gUndoBtn, Undo last Comms
-Gui,  AllRound:Add, ListView, vToggleComsList r20 w450 h100 x250 y600, Coms      |Sold Item
+Gui,  AllRound:Add, Button, vToggleUndoBtn w100 h40 y390 x0 gUndoBtn, Undo last Comms
+Gui,  AllRound:Add, ListView, vToggleComsList r20 w450 h100 x250 y330, Coms      |Sold Item
 
 
 
@@ -362,6 +404,9 @@ UndoBtnFunction(){
 
 
 
+
+
+
 UndoBtn:
    UndoBtnFunction()
    return
@@ -377,14 +422,6 @@ SaveBtn:
     
     
 return
-
-init(){
- ;NBNPage.nbnPlans.Insert("test")
-	;msgBox, %NBNPage.nbnPlans%
-
-
-
-}
 
 
 
@@ -685,25 +722,6 @@ S512GB:
     return
 
 ;-----------------------------------------
-ShowReloInfomation(toggle){
-        GuiControl, %toggle%, ReloCustNameTitle
-        GuiControl, %toggle%, ReloCustName
-        GuiControl, %toggle%, ReloOlderAddressTitle
-        GuiControl, %toggle%, ReloOlderAddress
-        GuiControl, %toggle%, ReloNewAddressTitle
-        GuiControl, %toggle%, ReloNewAddress
-        GuiControl, %toggle%, ReloCallBackToCLose
-        GuiControl, %toggle%, ReloHasTechAppointment
-        GuiControl, %toggle%, ReloHasFetch
-        GuiControl, %toggle%, ReloHasMoblies
-        GuiControl, %toggle%, ReloHasDisconnectingDate
-        GuiControl, %toggle%, ReloHasTechAppointment
-        GuiControl, %toggle%, ReloCallBackToCLose
-        GuiControl, %toggle%, ReloConnectionDate
-        GuiControl, %toggle%, ReloDateTimeConnection
-        GuiControl, %toggle%, ReloDiconnectionDate
-        GuiControl, %toggle%, ReloDateTimeDiconnect
-}
 
 ;---------Template Functions--------------------------------
 DefaultPosition(){
@@ -745,7 +763,8 @@ CheckTemplate(){
         return
     }
     if(Temp == 3){
-        ShowReloInfomation("Hide")
+        ShowReloInfomation("show")
+         moveComsGui(true)
         return
     }
     
