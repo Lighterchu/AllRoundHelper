@@ -6,6 +6,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; Gui, AllRound:Color,, 000000
 Gui, AllRound:Color,C0C0C0
 gui AllRound:+AlwaysOnTop
+
+
+
+; gui, settings: Show, w300 h430 ,Settings
+gui, settings:Add, Button, Default x100 y400 w100 h30 gOpenSetting,Save Settings
+gui settings:+AlwaysOnTop
 Gui, AllRound: Show, w700 h430 ,All Round Helper v1.0.0
 
 
@@ -14,8 +20,13 @@ Gui, AllRound: Show, w700 h430 ,All Round Helper v1.0.0
 Gui, AllRound:Add, Button, Default x10  w100 h30 gManualLeavingMessage vleftMsg ,Manual Leave message
 Gui, AllRound:Add, Button, Default x+10 w100 h30 gEndingCalling vendCall ,End Call
 Gui, AllRound:Add, Button, Default x12 y2 w100 h30 gTrack vtracking ,Track Calls
-Gui, AllRound:Add, Button, Default x500 y2 w100 h30 ,Settings
+Gui, AllRound:Add, Button, Default x590 y2 w100 h30 gOpenSetting,Settings
 
+
+   
+
+
+    
 
 Gui, AllRound:Add, ListView, vCallsList x0  h50 w700 , Calls|NBN|Moblies|VoIP
 
@@ -96,7 +107,7 @@ ShowReloInfomation("Hide")
 
 ;-----------------Templates--------------------------------
 ; Gui, AllRound: Add, Text, section xm w80, Template:
-Gui, AllRound: Add, DropDownList,  w182 x250  vTemp gChangeTemplate  AltSubmit, Please Pick Template || Relocation| Addy Update| Relocation| Addy Update|
+Gui, AllRound: Add, DropDownList,  w182 x250  vTemp gChangeTemplate  AltSubmit, Please Pick Template || Relocation| Addy Update
 
     Gui, AllRound: Add, Text, section xm w80 vReloCustNameTitle,Customer Name:
     Gui, AllRound: Add, Edit, vReloCustName w200 ys
@@ -773,5 +784,11 @@ CheckTemplate(){
 }
 ChangeTemplate:
     CheckTemplate()
-    
+    return 
+
+OpenSetting:
+    ; gui, settings:Add, Button, Default x10 y400 w100 h30 gOpenSetting,Save Settings
+    ; gui settings:+AlwaysOnTop
+    ; gui, settings: Show, w300 h430 ,Settings
+   
     
