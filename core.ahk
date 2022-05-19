@@ -706,23 +706,28 @@ ShowReloInfomation(toggle){
 }
 
 ;---------Template Functions--------------------------------
+DefaultPosition(){
+    GuiControl, Move, Toggle1, y120
+    GuiControl, Move, ToggleComsText, y330
+    GuiControl, Move, totalAmount, y330
+    GuiControl, Move, ToggleUndoBtn, y390
+    GuiControl, Move, ToggleComsList, y330
+    WinMove,A,,,,,460
+    return 
+}
+
+
 moveComsGui(moveComs){
     if(moveComs){
-        GuiControl, Move, Toggle1, y120
-        GuiControl, Move, ToggleComsText, y330
-        GuiControl, Move, totalAmount, y330
-        GuiControl, Move, ToggleUndoBtn, y390
-        GuiControl, Move, ToggleComsList, y330
-        WinMove,A,,,,,460
-        return
-    }
         GuiControl, Move, Toggle1, y400
         GuiControl, Move, ToggleComsText, y640
         GuiControl, Move, totalAmount, y640
         GuiControl, Move, ToggleUndoBtn, y670
         GuiControl, Move, ToggleComsList, y600
         WinMove,A,,,,,740
-        return 
+        return
+    }
+    DefaultPosition()
 
 }
 
@@ -730,13 +735,13 @@ CheckTemplate(){
     GuiControlGet, Temp,
       if(Temp == 1){
           ShowReloInfomation("Hide")
-          moveComsGui(true)
+          moveComsGui(false)
         return
     }
     if(Temp == 2){
         ShowReloInfomation("Show")
         GuiControl, Move, Toggle1, y400
-        moveComsGui(false)
+        moveComsGui(true)
         return
     }
     if(Temp == 3){
