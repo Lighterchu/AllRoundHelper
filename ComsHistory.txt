@@ -1,0 +1,142 @@
+$3 25/10 NBN 
+$3 NF18Mesh 
+$6 NF18Mesh 
+$9 NF18Mesh 
+$12 NF18Mesh 
+$15 NF18Mesh 
+$18 NF18Mesh 
+$12 Casual 
+$24 5G SIM Voice and Data (10GB)  
+$30 Mobile Sim Data Only 5GB  
+$36 4G Voice and Data, 2GB 
+$48 5G SIM Voice and Data (10GB)  
+$60 5G SIM Voice and Data (10GB)  
+$72 5G SIM Voice and Data (10GB)  
+$84 5G SIM Voice and Data (10GB)  
+$3 25/10 NBN 
+$15 5G SIM Voice and Data (10GB)  
+$27 5G SIM Voice and Data (10GB)  
+$39 5G SIM Voice and Data (10GB)  
+$3 NF18Mesh 
+$6 NF18Mesh 
+$9 NF18Mesh 
+$12 NF18Mesh 
+$18 Mobile Sim Data Only 5GB  
+$3 25/10 NBN 
+$6 25/10 NBN 
+$9 25/10 NBN 
+$12 25/10 NBN 
+$15 25/10 NBN 
+$18 25/10 NBN 
+$3 25/10 NBN 
+$3 25/10 NBN 
+$9 Mobile Sim Data Only 5GB  
+$15 Mobile Sim Data Only 5GB  
+$21 Mobile Sim Data Only 5GB  
+$27 Mobile Sim Data Only 5GB  
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$3 25/10 NBN 
+$10.500000 250/25 NBN 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$28.500000 Mobile Sim Data Only 40GB  
+$10.500000 250/25 NBN 
+$13.500000 25/10 NBN 
+$10.500000 250/25 NBN 
+$3 25/10 NBN 
+$3 25/10 NBN 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$10.500000 250/25 NBN 
+$21.000000 250/25 NBN 
+$31.500000 250/25 NBN 
+$10.500000 250/25 NBN 
+$21.000000 250/25 NBN 
+$31.500000 250/25 NBN 
+$42.000000 250/25 NBN 
+$52.500000 250/25 NBN 
+$63.000000 250/25 NBN 
+$73.500000 250/25 NBN 
+$84.000000 250/25 NBN 
+$94.500000 250/25 NBN 
+$105.000000 250/25 NBN 
+$115.500000 250/25 NBN 
+$126.000000 250/25 NBN 
+$5.250000 75/20 NBN Unlimted 
+$9.750000 100/20  NBN 500GB 
+$15.750000  100/40 NBN Unlimted 
+$3 25/10 NBN 
+$8.250000 75/20 NBN Unlimted 
+$20.250000 5G SIM Voice and Data (10GB)  
+$32.250000 5G SIM Voice and Data (50GB)  
+$5.250000 75/20 NBN Unlimted 
+$10.500000 75/20 NBN Unlimted 
+$14.250000 75/20 NBN 500GB 
+$5.250000 75/20 NBN Unlimted 
+$9.000000 75/20 NBN 500GB 
+$14.250000 75/20 NBN Unlimted 
+$5.250000 75/20 NBN Unlimted 
+$10.500000 75/20 NBN Unlimted 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$16.500000 25/10 NBN 
+$21.750000 75/20 NBN Unlimted 
+$3 25/10 NBN 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$24.000000 250/100 NBN 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$24.000000 250/100 NBN 
+$36.000000 EveryDay 
+$48.000000 International 
+$60.000000 Casual 
+$3 25/10 NBN 
+$6 25/10 NBN 
+$9 25/10 NBN 
+$12 25/10 NBN 
+$15 25/10 NBN 
+$18 25/10 NBN 
+$21 25/10 NBN 
+$24 25/10 NBN 
+$27 25/10 NBN 
+$30 25/10 NBN 
+$33 25/10 NBN 
+$36 25/10 NBN 
+$39 25/10 NBN 
+$3 25/10 NBN 
+$6 25/10 NBN 
+$9 25/10 NBN 
+$14.250000 75/20 NBN Unlimted 
+$24.750000 250/25 NBN 
+$27.750000 25/10 NBN 
+$5.250000 75/20 NBN Unlimted 
+$3 25/10 NBN 
+$13.500000 250/25 NBN 
+$24.000000 250/100 NBN 
+$4.500000 4G Voice and Data, 2.50GB (Standalone) 
+$9.000000 4G Voice and Data, 2.50GB (Standalone) 
+$12 5G SIM Voice and Data (50GB)  
+$24 5G SIM Voice and Data (80GB)  
+$36 5G SIM Voice and Data (10GB)  
+$48 4G Voice and Data, 25GB 
+$54 4G Voice and Data, 5GB 
+$60 4G Voice and Data, 2GB 
+$64.500000 4G Voice and Data, 2.50GB (Standalone) 
+$70.500000 4G Voice and Data, 15GB (Standalone) 
+$78.000000 4G Voice and Data, 30GB (Standalone) 
+$85.500000 Mobile Sim Data Only 50GB (Stand Alone)  
+$93.000000 Mobile Sim Data Only 30GB (Stand Alone)  
+$99.000000 Mobile Sim Data Only 15GB (Stand Alone)  
+$103.500000 Mobile Sim Data Only 25GB (Stand Alone)  
+$115.500000 Mobile Sim Data Only 25GB  
+$130.500000 Mobile Sim Data Only 40GB  
+$12 5G SIM Voice and Data (10GB)  
+$24 5G SIM Voice and Data (50GB)  
+$36 5G SIM Voice and Data (80GB)  
+$51 4G Voice and Data, 100GB 
+$63 4G Voice and Data, 25GB 
+$69 4G Voice and Data, 15GB (Standalone) 
